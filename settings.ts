@@ -70,4 +70,20 @@ namespace UsefulBlocks {;
         let buf = pins.i2cReadBuffer(adress, pins.sizeOf(format), repeated)
         return buf.getNumber(format, 0)
     }
+    /**
+    * Выполнить один блок, если v2, иначе другой
+    */
+    //% block="если v2 %v2Body иначе %v1Body"
+    //% v2Body.shadow=statement
+    //% v1Body.shadow=statement
+    export function v2CheckContainer(v2Body: () => void, v1Body: () => void): void {
+        let v2 = false
+        try {
+            v2 = input.logoIsPressed() !== undefined
+        } catch (e) {
+            v2 = false
+        }
+        if (v2) v2Body()
+        else v1Body()
+    }
 }
