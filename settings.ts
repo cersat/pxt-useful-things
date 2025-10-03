@@ -70,4 +70,15 @@ namespace UsefulBlocks {;
         let buf = pins.i2cReadBuffer(adress, pins.sizeOf(format), repeated)
         return buf.getNumber(format, 0)
     }
+    /**
+    * Ждать, пока условие не станет истинным или не выйдет таймаут
+    */
+    //% block="ждать до %cond максимум %timeout мс"
+    //% cond.shadow=logic_boolean
+    export function waitTimeout(cond: boolean, timeout: number): void {
+        let start = input.runningTime()
+        while (!cond && (input.runningTime() - start) < timeout) {
+            basic.pause(50)
+        }
+    }
 }
