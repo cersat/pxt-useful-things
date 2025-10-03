@@ -4,8 +4,7 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*",
-        "audio-recording": "*"
+        "microphone": "*"
     },
     "files": [
         "main.blocks",
