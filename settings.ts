@@ -18,7 +18,7 @@ enum LedChY {
 /**
  * Custom blocks
  */
-//% weight=100 color=#a64d79 icon="" block="Полезные блоки"
+//% weight=100 color=#0b5394 icon="" block="Полезные блоки"
 namespace UsefulBlocks {;
     /**
      * Заставляет указанный светодиод мерцать с указанной задержкой
@@ -61,12 +61,8 @@ namespace UsefulBlocks {;
     /**
      * Проверка версии micro:bit
      */
-    //% block="Читать число с i2c по адресу %adress , формат - %format , повторялся ли - %repeated?"
-    export function i2cReadNum(adress: number, format: NumberFormat, repeated?: boolean): number {
-        let buf = pins.i2cReadBuffer(adress, pins.sizeOf(format), repeated)
-        return buf.getNumber(format, 0)
-    }
-    export function AssignVar(name: string): void{
-        let a = name; 
+    //% block="Задать скрытую переменную значение %content"
+    export function AssignVar(content: string): void{
+        const var1 = content; 
     }
 }
