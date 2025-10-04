@@ -25,7 +25,7 @@ enum Pictures {
 /**
  * Custom blocks
  */
-//% weight=100 color=#0b5394 icon="" block="Полезные блоки"
+//% weight=100 color=#cdf305 icon="" block="Полезные блоки"
 namespace UsefulThings {
     /**
      * Заставляет указанный светодиод мерцать с указанной задержкой

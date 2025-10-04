@@ -10,6 +10,14 @@
 * нажмите **Расширения** в меню-шестерёнке
 * найдите **https://github.com/cersat/pxt-useful-things** и импортируйте
 
+Или:
+
+* открыть [https://makecode.microbit.org/](https://makecode.microbit.org/)
+* нажмите на **Новый проект**
+* нажмите **Расширения** в меню-шестерёнке
+* введите в поиск: **https://github.com/cersat/pxt-useful-things** 
+* импортируйте **pxt-useful-things**
+
 ## Править этот проект
 
 Редактировать этот репозиторий в MakeCode.
