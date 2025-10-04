@@ -18,7 +18,8 @@ enum LedChY {
 
 enum Pictures {
     Hi = 1,
-    Beach = 2
+    Beach = 2,
+    Robot = 3
 }
 
 /**
@@ -73,26 +74,38 @@ namespace UsefulThings {
     }
 
     /**
-    * Выводит первое значение, если условие истинно, и второе - если ложно
+    * Рисует картинку по выбору
     */
     //% block="Рисовать картинку %picture"
-    export function PictureDraw(picture: Pictures): void{
-        if ((picture) == (1)) {
-            basic.showLeds(`
-            # . # . #
-            # . # . .
-            # # # . #
-            # . # . #
-            # . # . #
-            `);
-        } else ((picture) == (2)) ;{
-            basic.showLeds(`
-            . . . # #
-            . . . . #
-            . . . . .
-            # # # # #
-            # # # # #
+    export function PictureDraw(picture: Pictures): void {
+        switch (picture) {
+            case Pictures.Hi:
+                basic.showLeds(`
+                # . # . #
+                # . # . .
+                # # # . #
+                # . # . #
+                # . # . #
             `)
+                break
+            case Pictures.Beach:
+                basic.showLeds(`
+                . . . # #
+                . . . . #
+                . . . . .
+                # # # # #
+                # # # # #
+            `)
+                break
+            case Pictures.Robot:
+                basic.showLeds(`
+                . . . . .
+                . . . . .
+                . . # . .
+                . . . . .
+                . . . . .
+            `)
+                break
         }
     }
 }
