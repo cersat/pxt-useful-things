@@ -71,6 +71,11 @@ namespace UsefulThings {
     export function AssignVar(content: string): void{
         const var1 = content; 
     }
+
+    /**
+    * Выводит первое значение, если условие истинно, и второе - если ложно
+    */
+    //% block="Рисовать картинку %picture"
     export function PictureDraw(picture: Pictures): void{
         if ((picture) == (1)) {
             basic.showLeds(`
