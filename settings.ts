@@ -7,6 +7,7 @@ enum LedChX {
     X3=3,
     X4=4
 }
+
 enum LedChY {
     Y0 = 0,
     Y1 = 1,
@@ -15,11 +16,16 @@ enum LedChY {
     Y4 = 4
 }
 
+enum Pictures {
+    Hi = 1,
+    Beach = 2
+}
+
 /**
  * Custom blocks
  */
 //% weight=100 color=#0b5394 icon="" block="Полезные блоки"
-namespace UsefulBlocks {;
+namespace UsefulThings {
     /**
      * Заставляет указанный светодиод мерцать с указанной задержкой
     */
@@ -64,5 +70,24 @@ namespace UsefulBlocks {;
     //% block="Задать скрытую переменную значение %content"
     export function AssignVar(content: string): void{
         const var1 = content; 
+    }
+    export function PictureDraw(picture: Pictures): void{
+        if ((picture) == (1)) {
+            basic.showLeds(`
+            # . # . #
+            # . # . .
+            # # # . #
+            # . # . #
+            # . # . #
+            `);
+        } else ((picture) == (2)) ;{
+            basic.showLeds(`
+            . . . # #
+            . . . . #
+            . . . . .
+            # # # # #
+            # # # # #
+            `)
+        }
     }
 }
