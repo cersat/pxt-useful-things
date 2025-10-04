@@ -35,9 +35,9 @@ namespace UsefulThings {
     export function blink(times: number, delay: number, pixelX: LedChX, pixelY: LedChY): void {
         for (let i = 0; i < times; i++) {
             led.toggle(pixelX, pixelY)
-            basic.pause(300)
+            basic.pause(delay)
             basic.clearScreen()
-            basic.pause(300)
+            basic.pause(delay)
         }
     }
     
