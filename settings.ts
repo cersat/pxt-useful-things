@@ -1,11 +1,18 @@
 
 
-enum LedChoice {
-    a=0,
-    b=1,
-    c=2,
-    d=3,
-    e=4
+enum LedChX {
+    X0=0,
+    X1=1,
+    X2=2,
+    X3=3,
+    X4=4
+}
+enum LedChY {
+    Y0 = 0,
+    Y1 = 1,
+    Y2 = 2,
+    Y3 = 3,
+    Y4 = 4
 }
 
 /**
@@ -17,7 +24,7 @@ namespace UsefulBlocks {;
      * Заставляет указанный светодиод мерцать с указанной задержкой
     */
     //% block="Мерцать %times раз с задержкой %delay координаты: Х:%pixelX Y:%pixelY"
-    export function blink(times: number, delay: number, pixelX: LedChoice, pixelY: LedChoice): void {
+    export function blink(times: number, delay: number, pixelX: LedChX, pixelY: LedChY): void {
         for (let i = 0; i < times; i++) {
             led.toggle(pixelX, pixelY)
             basic.pause(300)
@@ -26,17 +33,6 @@ namespace UsefulBlocks {;
         }
     }
     
-    /**
-     * Ждёт, пока условие не станет истинным
-    */
-       //% block="ждать до %cond"
-    //% cond.shadow=logic_boolean
-    export function waitUntil(cond: boolean): void {
-           while (!cond) {
-               basic.pause(100)
-         }
-    }
-
     /**
      * Выводит первое значение, если условие истинно, и второе - если ложно
      */
@@ -70,15 +66,7 @@ namespace UsefulBlocks {;
         let buf = pins.i2cReadBuffer(adress, pins.sizeOf(format), repeated)
         return buf.getNumber(format, 0)
     }
-    /**
-    * Ждать, пока условие не станет истинным или не выйдет таймаут
-    */
-    //% block="ждать до %cond максимум %timeout мс"
-    //% cond.shadow=logic_boolean
-    export function waitTimeout(cond: boolean, timeout: number): void {
-        let start = input.runningTime()
-        while (!cond && (input.runningTime() - start) < timeout) {
-            basic.pause(50)
-        }
+    export function AssignVar(name: string): void{
+        let a = name; 
     }
 }
