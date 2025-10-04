@@ -31,6 +31,7 @@ namespace UsefulThings {
      * Заставляет указанный светодиод мерцать с указанной задержкой
     */
     //% block="Мерцать %times раз с задержкой %delay координаты: Х:%pixelX Y:%pixelY"
+    //% subcategory="Экран"
     export function blink(times: number, delay: number, pixelX: LedChX, pixelY: LedChY): void {
         for (let i = 0; i < times; i++) {
             led.toggle(pixelX, pixelY)
@@ -77,6 +78,7 @@ namespace UsefulThings {
     * Рисует картинку по выбору
     */
     //% block="Рисовать картинку %picture"
+    //% subcategory="Экран"
     export function PictureDraw(picture: Pictures): void {
         switch (picture) {
             case Pictures.Hi:
