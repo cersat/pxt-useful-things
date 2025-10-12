@@ -27,6 +27,60 @@ enum Pictures {
  */
 //% weight=100 color=#cdf305 icon="" block="Полезные блоки"
 namespace UsefulThings {
+
+    // Адрес LCD (пример: PCF8574 модуль)
+    const LCD_ADDR = 0x27
+    const LCD_CMD = 0
+    const LCD_DATA = 1
+
+    // Таблица шрифта
+    const font: { [key: string]: number[] } = {}
+
+    /**
+     * Вспомогательная функция: отправка байта (заглушка, чтобы не мешала компиляции)
+     */
+    function i2cSend(value: number, mode: number) {
+        pins.i2cWriteNumber(LCD_ADDR, value, NumberFormat.UInt8BE)
+    }
+
+    /**
+     * Добавить символ (сохранить в UsefFont)
+     */
+    //% block="добавить символ %char как рисунок %pattern"
+    export function addSymbol(char: string, pattern: number[][]) {
+        let bytes: number[] = []
+        for (let row of pattern) {
+            let b = 0
+            for (let x = 0; x < 5; x++) {
+                if (row[x]) b |= (1 << (4 - x))
+            }
+            bytes.push(b)
+        }
+        font[char] = bytes
+    }
+
+    /**
+     * Показать символ на LCD, если он уже есть в памяти
+     */
+    //% block="показать символ %char на LCD"
+    //% subcategory="LCD"
+    export function showSymbol(char: string) {
+        const data = font[char]
+        if (!data) return  // если символ не добавлен — ничего не делаем
+
+        // Начинаем запись в CGRAM (ячейка 0)
+        i2cSend(0x40, LCD_CMD)
+
+        // Отправляем 8 строк рисунка
+        for (let i = 0; i < 8; i++) {
+            const val = (i < data.length) ? data[i] : 0
+            i2cSend(val, LCD_DATA)
+        }
+
+        // Показываем символ (ячейка 0)
+        i2cSend(0x00, LCD_DATA)
+    }
+
     /**
      * Заставляет указанный светодиод мерцать с указанной задержкой
     */
